@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>قعدة القهوة</title>
-<meta name="description" content="قعدة أونلاين مع أصحابك: صوت مباشر، غرف بباسورد، ترابيزة التحدي والدومينو والطاولة">
+<meta name="description" content="قعدة أونلاين مع أصحابك: صوت مباشر، غرف بباسورد، ترابيزة التحدي والدومينو والسلم والتعبان وكاندي بوم">
 <meta name="theme-color" content="#1b120c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,7 +97,7 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mu
 .foot{text-align:center;font-size:12px;color:var(--muted);margin-top:24px}
 
 /* ---------- lobby ---------- */
-.games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.games{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .gcard{display:flex;flex-direction:column;gap:8px;text-align:start}
 .gcard h3{font-family:var(--display);font-weight:400;font-size:26px;margin:0;color:var(--brass2)}
 .gcard .ic{font-size:34px}
@@ -156,11 +156,58 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mu
 .ends{display:flex;justify-content:space-between;direction:ltr;color:var(--brass2);font-weight:700;font-size:13px;margin-bottom:8px}
 .sidepick{display:flex;gap:10px;justify-content:center;margin-top:8px}
 
-/* ---------- tawla ---------- */
-.tw{display:grid;grid-template-columns:1fr 220px;gap:14px}
-@media (max-width:760px){.tw{grid-template-columns:1fr}}
-.twboard{width:100%;max-width:640px;display:block;margin:0 auto;border-radius:14px;touch-action:manipulation}
-.twboard [data-pt]{cursor:pointer}
+/* ---------- snakes & ladders ---------- */
+.sl{display:grid;grid-template-columns:1fr 240px;gap:14px}
+@media (max-width:760px){.sl{grid-template-columns:1fr}}
+.slboard{direction:ltr;width:100%;max-width:560px;display:block;margin:0 auto;border-radius:14px;border:6px solid #5a3a22;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.slboard .tk{transition:transform .16s ease-out}
+.pl .pos{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
+.lastmove{text-align:center;font-size:14px;color:var(--muted);min-height:1.5em}
+
+/* ---------- candy boom ---------- */
+.cbwrap{display:grid;grid-template-columns:1fr 240px;gap:14px;align-items:start}
+@media (max-width:760px){.cbwrap{grid-template-columns:1fr}}
+.cbhud{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:440px;margin:0 auto 10px}
+.cbhud .big{font-family:var(--display);font-size:30px;color:var(--brass2);line-height:1;font-variant-numeric:tabular-nums}
+.cbhud .lbl{font-size:12px;color:var(--muted)}
+.cbtime{height:8px;background:rgba(0,0,0,.3);border-radius:9px;overflow:hidden;max-width:440px;margin:0 auto 10px}
+.cbtime i{display:block;height:100%;background:var(--tile2);width:100%;transition:width .25s linear}
+.cb{position:relative;width:min(440px,100%);aspect-ratio:1;margin:0 auto;border-radius:16px;touch-action:none;user-select:none;-webkit-user-select:none;
+  background:linear-gradient(145deg,#3a2418,#24160e);border:5px solid #5a3a22;box-shadow:inset 0 0 30px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.4);overflow:hidden}
+.cb .cell{position:absolute;left:0;top:0;width:12.5%;height:12.5%;padding:.8%;transform:translate(calc(var(--c)*100%),calc(var(--r)*100%));transition:transform .2s cubic-bezier(.3,.7,.4,1.2);cursor:pointer}
+.cb .cell.nofx{transition:none}
+.cb .cand{width:100%;height:100%;position:relative;transition:transform .15s,opacity .15s;filter:drop-shadow(0 3px 2px rgba(0,0,0,.45))}
+.cb .cand::before{content:"";position:absolute;inset:0;background:var(--g);clip-path:var(--clip)}
+.cb .cand::after{content:"";position:absolute;inset:14% 40% 52% 18%;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(1px)}
+.cb .k0{--g:radial-gradient(circle at 35% 30%,#ff9a9a,#e0303a 60%,#8e1020);--clip:circle(48%)}
+.cb .k1{--g:radial-gradient(circle at 35% 30%,#fff3a0,#f2c21b 60%,#a07400);--clip:polygon(50% 2%,98% 50%,50% 98%,2% 50%)}
+.cb .k2{--g:radial-gradient(circle at 35% 30%,#a8f5a2,#2fb34a 60%,#13692a);--clip:inset(6% round 22%)}
+.cb .k3{--g:radial-gradient(circle at 35% 30%,#a9d8ff,#2f86e6 60%,#123f86);--clip:polygon(50% 0,100% 38%,82% 100%,18% 100%,0 38%)}
+.cb .k4{--g:radial-gradient(circle at 35% 30%,#f0b6ff,#a845d6 60%,#5a1a7e);--clip:polygon(25% 4%,75% 4%,100% 50%,75% 96%,25% 96%,0 50%)}
+.cb .k5{--g:radial-gradient(circle at 35% 30%,#ffd0a0,#f07a1c 60%,#8e3a06);--clip:polygon(50% 4%,98% 92%,2% 92%)}
+.cb .sp-h .cand::before{background:repeating-linear-gradient(0deg,rgba(255,255,255,.75) 0 3px,transparent 3px 8px),var(--g)}
+.cb .sp-v .cand::before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.75) 0 3px,transparent 3px 8px),var(--g)}
+.cb .sp-b .cand{animation:throb 1s ease-in-out infinite}
+.cb .sp-b .cand::before{background:radial-gradient(circle at 50% 50%,#fff 0 14%,transparent 15%),var(--g);clip-path:circle(50%)}
+.cb .sp-r .cand::before{background:conic-gradient(#e0303a,#f2c21b,#2fb34a,#2f86e6,#a845d6,#f07a1c,#e0303a);clip-path:circle(48%)}
+.cb .sp-r .cand{animation:spin 3s linear infinite}
+@keyframes throb{50%{transform:scale(1.12)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cb .cell.sel .cand{transform:scale(1.15);filter:drop-shadow(0 0 6px #fff) drop-shadow(0 3px 2px rgba(0,0,0,.45))}
+.cb .cell.hint .cand{animation:hint .9s ease-in-out infinite}
+@keyframes hint{50%{transform:scale(1.18) rotate(8deg)}}
+.cb .cell.pop .cand{transform:scale(0) rotate(90deg);opacity:0;transition:transform .22s ease-in,opacity .22s}
+.cb .cell.shake{animation:nope .3s}
+@keyframes nope{25%{margin-left:-4px}75%{margin-left:4px}}
+.cb .blast{position:absolute;pointer-events:none;background:rgba(255,255,255,.75);border-radius:8px;animation:blast .35s ease-out forwards}
+@keyframes blast{from{opacity:1}to{opacity:0;transform:scale(1.15)}}
+.cb .fx{position:absolute;pointer-events:none;font-family:var(--display);color:#fff;text-shadow:0 2px 0 #000,0 0 10px var(--brass);font-size:22px;animation:fxup .9s ease-out forwards;transform:translate(-50%,-50%)}
+@keyframes fxup{to{opacity:0;transform:translate(-50%,-160%) scale(1.3)}}
+.cb .over{position:absolute;inset:0;display:grid;place-items:center;background:rgba(20,12,8,.72);text-align:center;font-family:var(--display);font-size:clamp(28px,8vw,48px);color:var(--brass2);z-index:5}
+.combo{text-align:center;min-height:1.6em;font-family:var(--display);font-size:20px;color:var(--brass2)}
+.opts{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.opts label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.opts input{width:auto}
 .dice{display:flex;gap:8px;justify-content:center;margin:10px 0;direction:ltr}
 .die{width:42px;height:42px;background:#fffaf0;border-radius:9px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:6px;box-shadow:0 3px 0 #9c8458}
 .die .p{width:72%;height:72%;margin:auto;border-radius:50%;background:#2b1a0e}
@@ -181,8 +228,8 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mu
 <section id="landing" class="wrap">
   <div class="hero">
     <h1 class="sign">قعدة القهوة</h1>
-    <p>افتح قعدة بباسورد، ابعت الكود لأصحابك، واتكلموا بالصوت وانتوا بتلعبوا ترابيزة التحدي والدومينو والطاولة.</p>
-    <div class="cups"><span>🎙️ صوت مباشر</span><span>🔒 غرفة بباسورد</span><span>🔔 ترابيزة التحدي</span><span>🁫 دومينو</span><span>🎲 طاولة</span></div>
+    <p>افتح قعدة بباسورد، ابعت الكود لأصحابك، واتكلموا بالصوت وانتوا بتلعبوا ترابيزة التحدي والدومينو والسلم والتعبان وكاندي بوم.</p>
+    <div class="cups"><span>🎙️ صوت مباشر</span><span>🔒 غرفة بباسورد</span><span>🔔 ترابيزة التحدي</span><span>🁫 دومينو</span><span>🐍 السلم والتعبان</span><span>🍬 كاندي بوم</span></div>
   </div>
   <div class="namebox card">
     <label class="f">اسمك في القعدة<input id="myName" maxlength="16" placeholder="مثلاً: أبو حميد" autocomplete="nickname"></label>
@@ -351,6 +398,13 @@ const SND = {
   dice: () => { for (let i = 0; i < 5; i++) tone(700 + rnd(500), .04, "square", .1, i * .06); },
   join: () => { tone(523, .12); tone(784, .18, "sine", .15, .1); },
   turn: () => tone(988, .12, "triangle", .12),
+  step: () => tone(520 + rnd(80), .05, "triangle", .1),
+  ladder: () => [523, 659, 784, 1047].forEach((f, i) => tone(f, .14, "triangle", .14, i * .08)),
+  snake: () => { tone(500, .5, "sawtooth", .08); tone(160, .5, "sawtooth", .1, .1); },
+  win: () => [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, .22, "triangle", .16, i * .12)),
+  pop: lvl => tone(600 + Math.min(lvl, 8) * 90, .09, "sine", .14),
+  boom: () => { tone(90, .4, "sawtooth", .2); tone(60, .5, "square", .12, .05); },
+  swapBad: () => tone(220, .12, "square", .08),
 };
 
 /* ------------------------- app state ------------------------- */
@@ -360,7 +414,8 @@ const conns = new Map();                // host: peerId -> {conn, authed, tries}
 let H = null;                           // host-only full state
 let S = null, prevS = null;             // last public state seen by this client
 let myHand = [];                        // my domino tiles
-const ui = { cat: "mix", count: 10, domSel: null, domPick: null, twPick: null, twSel: null, kickArm: null, leaveArm: false, voted: {} };
+const ui = { cat: "mix", count: 10, domSel: null, domPick: null, domTarget: 101, slPick: null, slSix: true, slExact: true, cbDur: 90,
+             slDisp: {}, slAnim: null, kickArm: null, leaveArm: false };
 
 /* ------------------------- helpers ------------------------- */
 function toast(msg, ms = 2600) { const t = $("#toast"); t.textContent = msg; t.hidden = false; t.style.opacity = 1;
@@ -485,7 +540,7 @@ async function createRoom() {
     peer.on("open", id => {
       isHost = true; myId = id; inRoom = true;
       H = { code, pass, locked: false, seq: 1, members: [{ id, name: myName, host: true, j: 0, mic: micOn }], mode: "lobby",
-            trivia: null, domino: null, tawla: null, used: new Set(), lastReact: {} };
+            trivia: null, domino: null, snakes: null, candy: null, used: new Set(), lastReact: {} };
       peer.on("connection", onHostConnection);
       bindPeerCommon();
       enterRoom(); sync();
@@ -526,6 +581,7 @@ function leave(msg) {
   try { localStream?.getTracks().forEach(t => t.stop()); } catch (e) {}
   try { peer?.destroy(); } catch (e) {}
   peer = null; hostConn = null; H = null; S = null; prevS = null; isHost = false; conns.clear(); myHand = []; analysers.clear();
+  cbStop(); if (ui.slAnim) clearTimeout(ui.slAnim.t); ui.slAnim = null; ui.slDisp = {};
   $("#room").hidden = true; $("#dock").hidden = true; $("#landing").hidden = false;
   $("#btnCreate").disabled = false; $("#btnJoin").disabled = false; $("#errCreate").textContent = ""; $("#errJoin").textContent = "";
   if (msg) toast(msg, 4000);
@@ -582,7 +638,13 @@ function removeMember(id, why) {
   const T = H.trivia;
   if (H.mode === "trivia" && T && T.buzz === id && (T.phase === "buzzed" || T.phase === "voting")) { T.phase = "result"; T.result = { who: id, ok: false, delta: 0, gone: true }; T.deadline = Date.now() + 4000; }
   if (H.mode === "domino" && H.domino?.players.includes(id) && H.domino.phase === "play") { H.domino.phase = "aborted"; H.domino.note = m.name + " خرج، اللعبة وقفت"; }
-  if (H.mode === "tawla" && H.tawla?.players.includes(id) && H.tawla.phase !== "over") { H.tawla.phase = "aborted"; H.tawla.note = m.name + " خرج، الدور وقف"; }
+  const L = H.snakes;
+  if (H.mode === "snakes" && L?.players.includes(id) && L.phase !== "over") {
+    const i = L.players.indexOf(id), cur = L.players[L.turn];
+    L.players.splice(i, 1); delete L.pos[id];
+    if (L.players.length < 2) { L.phase = "aborted"; L.note = m.name + " خرج، ومفيش لاعبين كفاية"; }
+    else { L.turn = cur === id ? i % L.players.length : L.players.indexOf(cur); L.phase = "roll"; }
+  }
   sync();
   toast(m.name + " " + why);
 }
@@ -592,7 +654,8 @@ function buildPublic() {
     members: H.members.map(m => ({ id: m.id, name: m.name, host: m.host, j: m.j, mic: m.mic, bot: !!m.bot })),
     trivia: H.trivia ? pubTrivia() : null,
     domino: H.domino ? pubDomino() : null,
-    tawla: H.tawla ? pubTawla() : null,
+    snakes: H.snakes ? pubSnakes() : null,
+    candy: H.candy ? pubCandy() : null,
   };
 }
 function sync() {
@@ -627,15 +690,13 @@ let botTimer = null, botKey = "";
 function botPlan() {
   if (!H) return;
   let key = "", fn = null, delay = 0;
-  const D = H.mode === "domino" && H.domino, W = H.mode === "tawla" && H.tawla, T = H.mode === "trivia" && H.trivia;
+  const D = H.mode === "domino" && H.domino, L = H.mode === "snakes" && H.snakes, T = H.mode === "trivia" && H.trivia;
   if (D && D.phase === "play" && isBot(D.players[D.turn])) {
     const id = D.players[D.turn];
     key = `d${D.round}-${D.chain.length}-${D.turn}-${D.hands[id].length}-${D.passes}`; fn = () => botDomino(id); delay = 900 + rnd(800);
-  } else if (W && isBot(W.players[W.turn])) {
-    const id = W.players[W.turn];
-    if (W.phase === "roll") { key = "tr" + W.rollId + "-" + W.turn; fn = () => twRoll(id); delay = 900; }
-    else if (W.phase === "move") { key = `tm${W.rollId}-${W.moved.length}`; fn = () => botTawla(id); delay = 650 + rnd(400); }
-    else if (W.phase === "confirm") { key = "tc" + W.rollId; fn = () => twDone(id); delay = 700; }
+  } else if (L && L.phase === "roll" && isBot(L.players[L.turn])) {
+    const id = L.players[L.turn];
+    key = "sl" + L.rollId + "-" + L.turn; fn = () => slRoll(id); delay = 2600 + rnd(600); // let the last move animate first
   } else if (T && T.phase === "question" && H.members.some(m => m.bot)) {
     key = "tq" + T.qi; delay = 5000 + rnd(9000);
     fn = () => { if (H?.trivia === T && T.phase === "question" && Math.random() < .7) { const bots = H.members.filter(m => m.bot); trivBuzz(bots[rnd(bots.length)].id); } };
@@ -652,22 +713,6 @@ function botDomino(id) {
   ok.sort((a, b) => (b[0] + b[1] + (b[0] === b[1] ? 5 : 0)) - (a[0] + a[1] + (a[0] === a[1] ? 5 : 0)));
   const t = ok[0], e = domEnds(D);
   domPlay(id, t, !e || t[0] === e[1] || t[1] === e[1] ? "R" : "L");
-}
-function botTawla(id) {
-  const W = H.tawla; if (!W || W.phase !== "move" || W.players[W.turn] !== id) return;
-  const p = W.turn, s = p === 0 ? 1 : -1;
-  let best = null, bestScore = -1e9;
-  for (const m of W.legal) {
-    const after = applyMove(W.pos, p, m); let sc = Math.random();
-    if (after.bar[1 - p] > W.pos.bar[1 - p]) sc += 30;                       // hit
-    if (m.to === "off") sc += 25;                                               // bear off
-    if (m.to !== "off") { const c = after.b[m.to] * s; if (c === 2) sc += 15; else if (c > 2) sc += 4; else sc -= 8; } // make point / leave blot
-    if (m.from !== "bar" && after.b[m.from] * s === 1) sc -= 10;              // leave blot behind
-    if (m.from === "bar") sc += 5;
-    const back = m.from === "bar" ? 24 : (p === 0 ? m.from : 23 - m.from); sc += back * .3; // move back checkers forward
-    if (sc > bestScore) { bestScore = sc; best = m; }
-  }
-  if (best) twMove(id, best.from, best.to);
 }
 function broadcast(msg) { for (const rec of conns.values()) if (rec.authed && rec.conn.open) try { rec.conn.send(msg); } catch (e) {} }
 
@@ -691,23 +736,24 @@ function handleAction(from, a) {
     }
     case "lock": if (!isHostAct) return; H.locked = !H.locked; sync(); return;
     case "addBot": if (!isHostAct) return; if (addBot()) sync(); else toast("مفيش مكان للاعب افتراضي تاني"); return;
-    case "lobby": if (!isHostAct) return; H.mode = "lobby"; H.trivia = null; H.domino = null; H.tawla = null; sync(); return;
+    case "lobby": if (!isHostAct) return; H.mode = "lobby"; H.trivia = null; H.domino = null; H.snakes = null; H.candy = null; sync(); return;
     case "trivStart": if (!isHostAct) return; trivStart(a.cat, a.count); return;
     case "trivSkip": if (!isHostAct || !H.trivia) return; trivNext(); return;
     case "buzz": return trivBuzz(from);
     case "done": return trivDone(from);
     case "vote": return trivVote(from, a.v);
-    case "domStart": if (!isHostAct) return; domStart(a.players); return;
+    case "domStart": if (!isHostAct) return; domStart(a.players, a.target); return;
+    case "domMatch": if (!isHostAct || !H.domino) return; domStart(H.domino.players, H.domino.target); return;
     case "domRound": if (!isHostAct || !H.domino) return; domDeal(); sync(); return;
     case "domPlay": return domPlay(from, a.tile, a.side);
     case "domDraw": return domDraw(from);
     case "domPass": return domPass(from);
-    case "twStart": if (!isHostAct) return; twStart(a.players); return;
-    case "twAgain": if (!isHostAct || !H.tawla) return; twNewGame(); sync(); return;
-    case "twRoll": return twRoll(from);
-    case "twMove": return twMove(from, a.from, a.to);
-    case "twUndo": return twUndo(from);
-    case "twDone": return twDone(from);
+    case "slStart": if (!isHostAct) return; slStart(a.players, a.six, a.exact); return;
+    case "slAgain": if (!isHostAct || !H.snakes) return; slStart(H.snakes.players, H.snakes.six, H.snakes.exact); return;
+    case "slRoll": return slRoll(from);
+    case "cbStart": if (!isHostAct) return; cbStart(a.dur); return;
+    case "cbAgain": if (!isHostAct || !H.candy) return; cbStart(H.candy.dur); return;
+    case "cbScore": return cbScore(from, a.s);
   }
 }
 
@@ -721,7 +767,7 @@ function trivStart(cat, count) {
   let fresh = pool.filter(i => !H.used.has(i)); if (fresh.length < count) { pool.forEach(i => H.used.delete(i)); fresh = pool; }
   const qs = shuffle(fresh).slice(0, count); qs.forEach(i => H.used.add(i));
   if (H.members.length < 2) addBot(); // alone? bring a virtual opponent
-  H.mode = "trivia"; H.domino = null; H.tawla = null;
+  H.mode = "trivia"; H.domino = null; H.snakes = null; H.candy = null;
   H.trivia = { cat, qs, qi: -1, scores: {}, phase: "question", buzz: null, votes: {}, result: null, deadline: 0, botSaid: null };
   H.members.forEach(m => H.trivia.scores[m.id] = 0);
   trivNext();
@@ -776,11 +822,12 @@ setInterval(() => { // host clock
 /* =================================================================
    GAME 2: الدومينو (double-six)
    ================================================================= */
-function domStart(players) {
+function domStart(players, target) {
   players = (Array.isArray(players) ? players : []).filter(id => H.members.some(m => m.id === id)).slice(0, 4);
   while (players.length < 2) { const b = H.members.find(m => m.bot && !players.includes(m.id)) || addBot(); if (!b) return; players.push(b.id); }
-  H.mode = "domino"; H.trivia = null; H.tawla = null;
-  H.domino = { players, scores: Object.fromEntries(players.map(p => [p, 0])), round: 0, lastWinner: null };
+  H.mode = "domino"; H.trivia = null; H.snakes = null; H.candy = null;
+  target = [0, 51, 101, 151].includes(+target) ? +target : 0;
+  H.domino = { players, target, champ: null, scores: Object.fromEntries(players.map(p => [p, 0])), round: 0, lastWinner: null };
   domDeal(); sync();
 }
 function domDeal() {
@@ -828,115 +875,86 @@ function domPass(from) {
 }
 function domEnd(winner, blocked) {
   const D = H.domino; D.phase = "over";
-  let pts = 0; if (winner) { D.players.forEach(p => { if (p !== winner) pts += pips(D.hands[p]); }); D.scores[winner] += pts; D.lastWinner = winner; }
+  let pts = 0; if (winner) { D.players.forEach(p => { if (p !== winner) pts += pips(D.hands[p]); }); D.scores[winner] += pts; D.lastWinner = winner;
+    if (D.target && D.scores[winner] >= D.target) D.champ = winner; }
   D.result = { winner, pts, blocked, hands: Object.fromEntries(D.players.map(p => [p, D.hands[p]])) };
   sync();
 }
 function pubDomino() {
   const D = H.domino;
   return { players: D.players, counts: Object.fromEntries(D.players.map(p => [p, D.hands[p]?.length || 0])), chain: D.chain, bone: D.boneyard?.length || 0,
-           turn: D.turn, phase: D.phase, scores: D.scores, result: D.result, last: D.last, note: D.note, round: D.round };
+           turn: D.turn, phase: D.phase, scores: D.scores, result: D.result, last: D.last, note: D.note, round: D.round, target: D.target, champ: D.champ };
 }
 
 /* =================================================================
-   GAME 3: الطاولة (backgammon / 31)
-   p0 moves 23 → 0 and bears off below 0 (home 0..5); p1 moves 0 → 23 (home 18..23).
+   GAME 3: السلم والتعبان (snakes & ladders, 2–6 players)
    ================================================================= */
-function twInitPos() { const b = Array(24).fill(0); b[23] = 2; b[12] = 5; b[7] = 3; b[5] = 5; b[0] = -2; b[11] = -5; b[16] = -3; b[18] = -5; return { b, bar: [0, 0], off: [0, 0] }; }
-const own = (v, p) => p === 0 ? v > 0 : v < 0;
-const blockedPt = (pos, i, p) => p === 0 ? pos.b[i] <= -2 : pos.b[i] >= 2;
-function allHome(pos, p) { if (pos.bar[p]) return false; for (let i = 0; i < 24; i++) if (own(pos.b[i], p) && (p === 0 ? i > 5 : i < 18)) return false; return true; }
-function singleMoves(pos, p, d) {
-  const res = [];
-  if (pos.bar[p] > 0) { const t = p === 0 ? 24 - d : d - 1; if (!blockedPt(pos, t, p)) res.push({ from: "bar", to: t, die: d }); return res; }
-  const home = allHome(pos, p);
-  for (let i = 0; i < 24; i++) {
-    if (!own(pos.b[i], p)) continue;
-    const t = p === 0 ? i - d : i + d;
-    if (t >= 0 && t < 24) { if (!blockedPt(pos, t, p)) res.push({ from: i, to: t, die: d }); }
-    else if (home) {
-      if (t === -1 || t === 24) res.push({ from: i, to: "off", die: d });
-      else { let further = false;
-        if (p === 0) { for (let k = i + 1; k <= 5; k++) if (own(pos.b[k], 0)) further = true; }
-        else { for (let k = 18; k < i; k++) if (own(pos.b[k], 1)) further = true; }
-        if (!further) res.push({ from: i, to: "off", die: d }); }
-    }
-  }
-  return res;
-}
-function applyMove(pos, p, m) {
-  const n = { b: pos.b.slice(), bar: pos.bar.slice(), off: pos.off.slice() }, s = p === 0 ? 1 : -1;
-  if (m.from === "bar") n.bar[p]--; else n.b[m.from] -= s;
-  if (m.to === "off") n.off[p]++;
-  else { const v = n.b[m.to]; if (p === 0 && v === -1) { n.b[m.to] = 0; n.bar[1]++; } else if (p === 1 && v === 1) { n.b[m.to] = 0; n.bar[0]++; } n.b[m.to] += s; }
-  return n;
-}
-function maxSeq(pos, p, dice) {
-  if (!dice.length) return 0; let best = 0; const tried = new Set();
-  for (let k = 0; k < dice.length; k++) { const d = dice[k]; if (tried.has(d)) continue; tried.add(d);
-    const rest = dice.slice(0, k).concat(dice.slice(k + 1));
-    for (const m of singleMoves(pos, p, d)) { const v = 1 + maxSeq(applyMove(pos, p, m), p, rest); if (v > best) best = v; if (best === dice.length) return best; } }
-  return best;
-}
-function legalNow(pos, p, dice) {
-  const max = maxSeq(pos, p, dice); if (!max) return [];
-  let out = []; const tried = new Set();
-  for (let k = 0; k < dice.length; k++) { const d = dice[k]; if (tried.has(d)) continue; tried.add(d);
-    const rest = dice.slice(0, k).concat(dice.slice(k + 1));
-    for (const m of singleMoves(pos, p, d)) if (1 + maxSeq(applyMove(pos, p, m), p, rest) === max) out.push(m); }
-  if (max === 1 && dice.length === 2 && dice[0] !== dice[1]) { const hi = Math.max(...dice); if (out.some(m => m.die === hi)) out = out.filter(m => m.die === hi); }
-  return out;
-}
-function twStart(players) {
-  players = (Array.isArray(players) ? players : []).filter(id => H.members.some(m => m.id === id)).slice(0, 2);
+const LADDERS = { 4: 14, 9: 31, 20: 38, 28: 84, 40: 59, 51: 67, 63: 81, 71: 91 };
+const SNAKES = { 17: 7, 54: 34, 62: 19, 64: 60, 87: 24, 93: 73, 95: 75, 99: 78 };
+function slStart(players, six, exact) {
+  players = (Array.isArray(players) ? players : []).filter(id => H.members.some(m => m.id === id)).slice(0, 6);
   while (players.length < 2) { const b = H.members.find(m => m.bot && !players.includes(m.id)) || addBot(); if (!b) return; players.push(b.id); }
-  H.mode = "tawla"; H.trivia = null; H.domino = null;
-  H.tawla = { players, scores: { [players[0]]: 0, [players[1]]: 0 } };
-  twNewGame(); sync();
-}
-function twNewGame() {
-  const W = H.tawla; W.pos = twInitPos(); W.note = ""; W.result = null;
-  let a, b; do { a = 1 + rnd(6); b = 1 + rnd(6); } while (a === b);
-  W.turn = a > b ? 0 : 1; W.opening = [a, b];
-  twBeginMoves([a, b]);
-}
-function twBeginMoves(roll) {
-  const W = H.tawla; W.rolled = roll.slice(); W.dice = roll[0] === roll[1] ? [roll[0], roll[0], roll[0], roll[0]] : roll.slice();
-  W.start = JSON.parse(JSON.stringify(W.pos)); W.moved = []; W.rollId = (W.rollId || 0) + 1;
-  W.legal = legalNow(W.pos, W.turn, W.dice);
-  W.phase = W.legal.length ? "move" : "nomove";
-  if (W.phase === "nomove") { const id = W.rollId; setTimeout(() => { if (H?.tawla === W && W.rollId === id && W.phase === "nomove") { twNextTurn(); sync(); } }, 2200); }
-}
-function twNextTurn() { const W = H.tawla; W.turn = 1 - W.turn; W.phase = "roll"; W.dice = []; W.moved = []; W.legal = []; }
-function twRoll(from) {
-  const W = H.tawla; if (!W || W.phase !== "roll" || W.players[W.turn] !== from) return;
-  W.opening = null; twBeginMoves([1 + rnd(6), 1 + rnd(6)]); sync();
-}
-function twMove(from, f, t) {
-  const W = H.tawla; if (!W || W.phase !== "move" || W.players[W.turn] !== from) return;
-  const m = W.legal.find(x => String(x.from) === String(f) && String(x.to) === String(t)); if (!m) return;
-  W.pos = applyMove(W.pos, W.turn, m); W.dice.splice(W.dice.indexOf(m.die), 1); W.moved.push(m);
-  if (W.pos.off[W.turn] === 15) {
-    const loser = 1 - W.turn, mars = W.pos.off[loser] === 0, pts = mars ? 2 : 1;
-    W.scores[W.players[W.turn]] += pts; W.phase = "over"; W.result = { winner: W.players[W.turn], pts, mars }; W.legal = []; sync(); return;
-  }
-  W.legal = W.dice.length ? legalNow(W.pos, W.turn, W.dice) : [];
-  if (!W.legal.length) W.phase = "confirm";
+  const prev = H.snakes?.wins || {};
+  H.mode = "snakes"; H.trivia = null; H.domino = null; H.candy = null;
+  H.snakes = { players: shuffle(players.slice()), pos: Object.fromEntries(players.map(p => [p, 0])), turn: 0, phase: "roll",
+               six: six !== false, exact: exact !== false, last: null, rollId: 0, winner: null, note: "",
+               wins: Object.fromEntries(players.map(p => [p, prev[p] || 0])) };
   sync();
 }
-function twUndo(from) {
-  const W = H.tawla; if (!W || !(W.phase === "move" || W.phase === "confirm") || W.players[W.turn] !== from || !W.moved.length) return;
-  const keep = W.moved.slice(0, -1); W.pos = JSON.parse(JSON.stringify(W.start));
-  W.dice = W.rolled[0] === W.rolled[1] ? [W.rolled[0], W.rolled[0], W.rolled[0], W.rolled[0]] : W.rolled.slice(); W.moved = [];
-  for (const m of keep) { W.pos = applyMove(W.pos, W.turn, m); W.dice.splice(W.dice.indexOf(m.die), 1); W.moved.push(m); }
-  W.legal = legalNow(W.pos, W.turn, W.dice); W.phase = W.legal.length ? "move" : "confirm"; sync();
+function slRoll(from) {
+  const L = H.snakes; if (!L || L.phase !== "roll" || L.players[L.turn] !== from) return;
+  const d = 1 + rnd(6), start = L.pos[from];
+  let to = start + d, bounced = false;
+  if (to > 100) { if (L.exact) { to = 200 - to; bounced = true; } else to = 100; }
+  const jump = LADDERS[to] || SNAKES[to] || null, end = jump || to;
+  L.pos[from] = end; L.rollId++;
+  L.last = { who: from, d, from: start, to, end, bounced, kind: LADDERS[to] ? "ladder" : SNAKES[to] ? "snake" : null };
+  if (end === 100) { L.phase = "over"; L.winner = from; L.wins[from] = (L.wins[from] || 0) + 1; }
+  else if (!(L.six && d === 6)) L.turn = (L.turn + 1) % L.players.length;
+  sync();
 }
-function twDone(from) { const W = H.tawla; if (!W || W.phase !== "confirm" || W.players[W.turn] !== from) return; twNextTurn(); sync(); }
-function pubTawla() {
-  const W = H.tawla;
-  return { players: W.players, scores: W.scores, pos: W.pos, turn: W.turn, phase: W.phase, dice: W.dice, rolled: W.rolled, legal: W.legal,
-           moved: (W.moved || []).length, result: W.result, note: W.note, opening: W.opening, rollId: W.rollId };
+function pubSnakes() {
+  const L = H.snakes;
+  return { players: L.players, pos: L.pos, turn: L.turn, phase: L.phase, six: L.six, exact: L.exact, last: L.last, rollId: L.rollId,
+           winner: L.winner, note: L.note, wins: L.wins };
 }
+
+/* =================================================================
+   GAME 4: كاندي بوم (match-3 race). Everyone plays the same seeded board
+   locally; the host keeps the clock and the live scores.
+   ================================================================= */
+const CB_LEAD = 3500;
+function cbStart(dur) {
+  dur = [60, 90, 120].includes(+dur) ? +dur : 90;
+  const round = (H.candy?.round || 0) + 1, now = Date.now();
+  H.mode = "candy"; H.trivia = null; H.domino = null; H.snakes = null;
+  H.candy = { dur, round, seed: 1 + rnd(2 ** 31 - 2), startAt: now + CB_LEAD, endAt: now + CB_LEAD + dur * 1000, phase: "play",
+              scores: Object.fromEntries(H.members.map(m => [m.id, 0])) };
+  sync();
+}
+function cbScore(from, v) {
+  const C = H.candy; v = Math.floor(+v);
+  if (!C || !Number.isFinite(v) || v < 0 || v > 1e7) return;
+  if (Date.now() > C.endAt + 2500) return;                  // small grace for cascades still landing
+  if (v <= (C.scores[from] || 0)) return;
+  C.scores[from] = v; cbSyncSoon();
+}
+let cbSyncT = null;
+function cbSyncSoon() { if (!cbSyncT) cbSyncT = setTimeout(() => { cbSyncT = null; if (H?.candy) sync(); }, 300); }
+function pubCandy() {
+  const C = H.candy, now = Date.now();
+  return { dur: C.dur, round: C.round, seed: C.seed, phase: C.phase, scores: C.scores,
+           startIn: Math.max(0, C.startAt - now), left: Math.max(0, C.endAt - now) };
+}
+setInterval(() => { // host clock + virtual players
+  const C = H?.candy; if (!C || H.mode !== "candy" || C.phase !== "play") return;
+  const now = Date.now();
+  if (now >= C.endAt + 2500) { C.phase = "over"; sync(); return; }
+  if (now < C.startAt || now > C.endAt) return;
+  let ch = false;
+  for (const m of H.members) if (m.bot && Math.random() < .55) { C.scores[m.id] = (C.scores[m.id] || 0) + 30 * (1 + rnd(4)) * (Math.random() < .15 ? 3 : 1); ch = true; }
+  if (ch) cbSyncSoon();
+}, 1000);
 
 /* =================================================================
    RENDERING
@@ -963,11 +981,8 @@ function sounds(a, b) {
     if (b.domino.chain.length !== a.domino.chain.length) SND.tile();
     if (b.domino.phase === "play" && b.domino.players[b.domino.turn] === myId && (a.domino.turn !== b.domino.turn || a.domino.phase !== "play")) SND.turn();
   }
-  if (b.tawla && a.tawla) {
-    if (b.tawla.rollId !== a.tawla.rollId) SND.dice();
-    else if (b.tawla.moved > (a.tawla.moved || 0)) SND.tile();
-    if (b.tawla.phase === "roll" && b.tawla.players[b.tawla.turn] === myId && a.tawla.phase !== "roll") SND.turn();
-  }
+  if (b.snakes && b.snakes.rollId !== a.snakes?.rollId && b.snakes.last) slAnimate(b.snakes, a.snakes);
+  if (b.candy && b.candy.phase === "over" && a.candy?.phase !== "over") SND.win();
 }
 function render() {
   if (!S || !inRoom) return;
@@ -980,8 +995,15 @@ function render() {
   const st = $("#stage");
   if (S.mode === "trivia" && S.trivia) st.innerHTML = renderTrivia();
   else if (S.mode === "domino" && S.domino) st.innerHTML = renderDomino();
-  else if (S.mode === "tawla" && S.tawla) st.innerHTML = renderTawla();
+  else if (S.mode === "snakes" && S.snakes) st.innerHTML = renderSnakes();
+  else if (S.mode === "candy" && S.candy) {
+    // score updates arrive several times a second: only refresh the side board, never rebuild the play area
+    const root = $("#cbRoot");
+    if (root && root.dataset.k === S.candy.round + "-" + S.candy.phase && CB?.el.isConnected) $("#cbSide").innerHTML = scoreboard(S.candy.scores, "الترتيب لايف");
+    else { st.innerHTML = renderCandy(); cbMount(); }
+  }
   else st.innerHTML = renderLobby();
+  if (S.mode !== "candy") cbStop();
   tickCountdown();
 }
 function renderPeople() {
@@ -1010,10 +1032,11 @@ function renderLobby() {
   // until the host edits a pick list, it follows who is in the room
   if (!ui.domTouched || !ui.domPick) ui.domPick = ms.slice(0, 4).map(m => m.id);
   ui.domPick = ui.domPick.filter(id => member(id)); if (!ui.domPick.length) ui.domPick = ms.slice(0, 4).map(m => m.id);
-  if (!ui.twTouched || !ui.twPick) ui.twPick = ms.slice(0, 2).map(m => m.id);
-  ui.twPick = ui.twPick.filter(id => member(id)); if (!ui.twPick.length) ui.twPick = ms.slice(0, 2).map(m => m.id);
-  const picker = (key, max) => `<div class="pick">${ms.map(m => `<label><input type="checkbox" data-pick="${key}" value="${esc(m.id)}" ${ui[key].includes(m.id) ? "checked" : ""} ${!isHost ? "disabled" : ""}>${esc(m.name)}</label>`).join("")}</div>
-     <div class="note">${key === "domPick" ? "من ٢ لـ ٤ لاعيبة، ولو اخترت نفسك بس هيلعب معاك لاعب افتراضي" : "لاعبين اتنين، ولو اخترت نفسك بس هيلعب معاك لاعب افتراضي"}</div>`;
+  if (!ui.slTouched || !ui.slPick) ui.slPick = ms.slice(0, 6).map(m => m.id);
+  ui.slPick = ui.slPick.filter(id => member(id)); if (!ui.slPick.length) ui.slPick = ms.slice(0, 6).map(m => m.id);
+  const picker = (key, note) => `<div class="pick">${ms.map(m => `<label><input type="checkbox" data-pick="${key}" value="${esc(m.id)}" ${ui[key].includes(m.id) ? "checked" : ""} ${!isHost ? "disabled" : ""}>${esc(m.name)}</label>`).join("")}</div>
+     <div class="note">${note}</div>`;
+  const sel = (id, opts, cur) => `<select id="${id}">${opts.map(([v, t]) => `<option value="${v}" ${+cur === v ? "selected" : ""}>${t}</option>`).join("")}</select>`;
   const alone = ms.filter(m => !m.bot).length < 2, nBots = ms.filter(m => m.bot).length;
   return `${isHost ? `<div class="row" style="justify-content:space-between;align-items:center;margin:0 0 12px"><p class="muted" style="margin:0">${alone ? "مستني أصحابك؟ كل الألعاب شغالة دلوقتي — لو مفيش حد معاك هيلعب قصادك لاعب افتراضي 🤖" : "انت صاحب القعدة، اختار اللعبة."}</p>
       ${nBots < 3 && ms.length < MAX_MEMBERS ? '<button class="btn sm teal" data-act="addBot">🤖 ضيف لاعب افتراضي</button>' : ""}</div>`
@@ -1027,13 +1050,21 @@ function renderLobby() {
     </div>
     <div class="card gcard"><div class="ic">🁫</div><h3>الدومينو</h3>
       <p>دبل سِكس. كل واحد ٧ حجارة، واللي يخلّص الأول ياخد مجموع نقط الباقيين.</p>
-      ${picker("domPick")}
-      ${isHost ? `<button class="btn" data-go="domino">ابدأ الدومينو</button>` : ""}
+      ${picker("domPick", "من ٢ لـ ٤ لاعيبة، ولو اخترت نفسك بس هيلعب معاك لاعب افتراضي")}
+      ${isHost ? `<label class="f">الماتش لحد<select id="selDomTarget">${[[0, "أدوار مفتوحة"], [51, "٥١ نقطة"], [101, "١٠١ نقطة"], [151, "١٥١ نقطة"]].map(([v, t]) => `<option value="${v}" ${ui.domTarget === v ? "selected" : ""}>${t}</option>`).join("")}</select></label>
+      <button class="btn" data-go="domino">ابدأ الدومينو</button>` : ""}
     </div>
-    <div class="card gcard"><div class="ic">🎲</div><h3>الطاولة</h3>
-      <p>طاولة ٣١ (باكجامون) بالقواعد الكاملة: الضرب، البار، والتقفيل. المارس بنقطتين.</p>
-      ${picker("twPick")}
-      ${isHost ? `<button class="btn" data-go="tawla">ابدأ الطاولة</button>` : ""}
+    <div class="card gcard"><div class="ic">🐍🪜</div><h3>السلم والتعبان</h3>
+      <p>من ٢ لـ ٦ لاعيبة. ارمي الزهر، اطلع على السلالم واهرب من التعابين، وأول واحد يوصل ١٠٠ يكسب.</p>
+      ${picker("slPick", "اختار من ٢ لـ ٦ لاعيبة")}
+      ${isHost ? `<div class="opts"><label><input type="checkbox" id="optSix" ${ui.slSix ? "checked" : ""}> الـ ٦ تديك دور كمان</label>
+        <label><input type="checkbox" id="optExact" ${ui.slExact ? "checked" : ""}> لازم توصل ١٠٠ بالظبط (الزيادة بترجّعك)</label></div>
+      <button class="btn" data-go="snakes">ابدأ السلم والتعبان</button>` : ""}
+    </div>
+    <div class="card gcard"><div class="ic">🍬💥</div><h3>كاندي بوم</h3>
+      <p>كل القعدة بتلعب في نفس الوقت على نفس اللوحة. بدّل الحلويات وكوّن ٣ أو أكتر، و٤ بتعمل صاروخ، والـ L بتعمل قنبلة، و٥ بتعمل قوس قزح. أعلى سكور يكسب.</p>
+      ${isHost ? `<label class="f">مدة الجولة${sel("selCbDur", [[60, "دقيقة"], [90, "دقيقة ونص"], [120, "دقيقتين"]], ui.cbDur)}</label>
+      <button class="btn" data-go="candy">ابدأ كاندي بوم</button>` : '<p class="note">كل اللي في القعدة بيلعبوا مع بعض</p>'}
     </div>
   </div>`;
 }
@@ -1115,16 +1146,17 @@ function renderDomino() {
   let over = "";
   if (D.phase === "over") {
     const r = D.result;
-    over = `<div class="card" style="margin-top:12px;text-align:center"><div class="sign" style="font-size:30px">${r.winner ? "🏆 " + esc(nameOf(r.winner)) + " كسب الدور" : "الدور اتقفل بالتعادل"}</div>
+    over = `<div class="card" style="margin-top:12px;text-align:center">${D.champ ? `<div class="sign" style="font-size:38px">👑 ${esc(nameOf(D.champ))} بطل الماتش</div><p class="muted">وصل ${D.scores[D.champ]} من ${D.target}</p>` : ""}
+      <div class="sign" style="font-size:${D.champ ? 22 : 30}px">${r.winner ? "🏆 " + esc(nameOf(r.winner)) + " كسب الدور" : "الدور اتقفل بالتعادل"}</div>
       <p class="muted">${r.blocked ? "اللعبة اتقفلت واتحسبت بأقل مجموع. " : ""}${r.winner ? "خد " + r.pts + " نقطة" : ""}</p>
       ${D.players.filter(p => p !== r.winner).map(p => `<div style="margin:6px 0"><b>${esc(nameOf(p))}:</b> <span class="hand" style="--ts:16px;display:inline-flex;padding:0;gap:3px">${(r.hands[p] || []).map(t => tileHTML(t, true)).join("")}</span></div>`).join("")}
-      ${isHost ? `<div class="row"><button class="btn" data-act="domRound">دور جديد</button><button class="btn ghost" data-act="lobby">رجوع للقعدة</button></div>` : ""}</div>`;
+      ${isHost ? `<div class="row">${D.champ ? '<button class="btn" data-act="domMatch">ماتش جديد</button>' : '<button class="btn" data-act="domRound">دور جديد</button>'}<button class="btn ghost" data-act="lobby">رجوع للقعدة</button></div>` : ""}</div>`;
   }
   if (D.phase === "aborted") over = `<div class="card" style="margin-top:12px;text-align:center"><p>${esc(D.note)}</p>${isHost ? '<button class="btn" data-act="lobby">رجوع للقعدة</button>' : ""}</div>`;
   const sel = ui.domSel && myHand.find(t => t[0] === ui.domSel[0] && t[1] === ui.domSel[1]);
   return `<div class="opps">${opps}</div>
     <div class="felt">
-      ${ends ? `<div class="ends"><span>◀ ${ends[0]}</span><span class="muted" style="font-weight:500">البنك: ${D.bone} · دور ${D.round}</span><span>${ends[1]} ▶</span></div>` : `<div class="ends"><span></span><span class="muted">البنك: ${D.bone}</span><span></span></div>`}
+      ${ends ? `<div class="ends"><span>◀ ${ends[0]}</span><span class="muted" style="font-weight:500">البنك: ${D.bone} · دور ${D.round}${D.target ? " · الماتش لـ " + D.target : ""}</span><span>${ends[1]} ▶</span></div>` : `<div class="ends"><span></span><span class="muted">البنك: ${D.bone}</span><span></span></div>`}
       <div class="chain">${chain}</div>
     </div>
     ${me ? `<div class="status" style="font-size:16px">${status}</div>
@@ -1134,6 +1166,7 @@ function renderDomino() {
       ${myTurn && !anyPlay ? `<div class="row">${D.bone ? '<button class="btn teal" data-act="domDraw">اسحب حجر</button>' : '<button class="btn" data-act="domPass">باص</button>'}</div>` : ""}
       <div class="muted" style="text-align:center;font-size:13px">نقطك: ${D.scores[myId]}</div>`
       : `<div class="status muted" style="font-size:16px">${status || ""} — انت بتتفرج 👀</div>`}
+    ${isHost && D.phase === "play" ? '<div class="row" style="margin-top:14px"><button class="btn sm ghost" data-act="lobby">إنهاء اللعبة</button></div>' : ""}
     ${over}`;
 }
 function domTapTile(key) {
@@ -1145,91 +1178,344 @@ function domTapTile(key) {
   act({ type: "domPlay", tile: t, side: fitL ? "L" : "R" }); ui.domSel = null;
 }
 
-/* ---- tawla ---- */
+/* ---- snakes & ladders ---- */
 const dieHTML = (n, cls = "") => `<div class="die ${cls}">${Array.from({ length: 9 }, (_, i) => `<i class="p ${PIPS[n].includes(i) ? "" : "x"}"></i>`).join("")}</div>`;
-function renderTawla() {
-  const W = S.tawla, view = W.players.indexOf(myId) === 1 ? 1 : 0, meIdx = W.players.indexOf(myId);
-  const myTurn = meIdx === W.turn && meIdx >= 0;
-  const col = ["#f6ead4", "#7a2e22"], stroke = ["#a58a5e", "#3b130d"];
-  const colX = c => 10 + c * 36 + (c >= 6 ? 32 : 0);
-  const place = i => { const v = view === 1 ? 23 - i : i; return v <= 11 ? { x: colX(11 - v), top: false } : { x: colX(v - 12), top: true }; };
-  const legal = myTurn && W.phase === "move" ? W.legal : [];
-  const sources = new Set(legal.map(m => String(m.from)));
-  if (ui.twSel != null && !sources.has(String(ui.twSel))) ui.twSel = null;
-  const targets = new Set(ui.twSel != null ? legal.filter(m => String(m.from) === String(ui.twSel)).map(m => String(m.to)) : []);
-  let svg = `<svg class="twboard" viewBox="0 0 520 400" role="img" aria-label="لوحة الطاولة">
-    <rect x="0" y="0" width="520" height="400" rx="14" fill="#5a3a22"/>
-    <rect x="8" y="8" width="438" height="384" rx="6" fill="#2f5d4f"/>
-    <rect x="226" y="8" width="32" height="384" fill="#4a2f1b"/>
-    <rect x="474" y="8" width="40" height="384" rx="6" fill="#3d2716"/>`;
-  for (let i = 0; i < 24; i++) {
-    const { x, top } = place(i), fill = (i % 2) ? "#e3cd9f" : "#a8432f";
-    svg += top ? `<polygon points="${x},10 ${x + 36},10 ${x + 18},172" fill="${fill}"/>` : `<polygon points="${x},390 ${x + 36},390 ${x + 18},228" fill="${fill}"/>`;
-    if (targets.has(String(i))) svg += top ? `<polygon points="${x},10 ${x + 36},10 ${x + 18},172" fill="rgba(242,203,120,.55)"/>` : `<polygon points="${x},390 ${x + 36},390 ${x + 18},228" fill="rgba(242,203,120,.55)"/>`;
-    const n = Math.abs(W.pos.b[i]), p = W.pos.b[i] > 0 ? 0 : 1;
-    for (let k = 0; k < Math.min(n, 5); k++) {
-      const cy = top ? 28 + k * 32 : 372 - k * 32, isSel = String(ui.twSel) === String(i) && k === Math.min(n, 5) - 1;
-      svg += `<circle cx="${x + 18}" cy="${cy}" r="15.5" fill="${col[p]}" stroke="${isSel ? "#f2cb78" : stroke[p]}" stroke-width="${isSel ? 4 : 2}"/>`;
-    }
-    if (n > 5) svg += `<text x="${x + 18}" y="${top ? 28 + 4 * 32 + 5 : 372 - 4 * 32 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${p ? "#fff" : "#2b1a0e"}">${n}</text>`;
-    if (sources.has(String(i)) && String(ui.twSel) !== String(i)) { const cy = top ? 28 + (Math.min(n, 5) - 1) * 32 : 372 - (Math.min(n, 5) - 1) * 32; svg += `<circle cx="${x + 18}" cy="${cy}" r="17.5" fill="none" stroke="#5fc3b4" stroke-width="2.5"/>`; }
-    const label = view === 0 ? i + 1 : 24 - i;
-    svg += `<text x="${x + 18}" y="${top ? 186 : 222}" text-anchor="middle" font-size="10" fill="rgba(246,234,212,.55)">${label}</text>`;
-    svg += `<rect data-pt="${i}" x="${x}" y="${top ? 8 : 200}" width="36" height="192" fill="transparent"/>`;
+const SL_COL = ["#d6a64f", "#5fc3b4", "#e4876f", "#a9c46a", "#c89bd8", "#79a7e0"];
+function slXY(n) { const r = Math.floor((n - 1) / 10), k = (n - 1) % 10, c = r % 2 ? 9 - k : k; return { x: c * 50 + 25, y: (9 - r) * 50 + 25, r, c }; }
+let slStatic = "";
+function slBoardSVG() { // cells, ladders and snakes never change, so draw them once
+  if (slStatic) return slStatic;
+  let g = "";
+  for (let n = 1; n <= 100; n++) {
+    const { x, y, r, c } = slXY(n);
+    g += `<rect x="${x - 25}" y="${y - 25}" width="50" height="50" fill="${n === 100 ? "#f2cb78" : (r + c) % 2 ? "#f3e3c2" : "#e4cb97"}"/>
+      <text x="${x - 21}" y="${y - 12}" font-size="10" font-weight="700" fill="#8a6a3e">${n}</text>`;
   }
-  // bar: own at bottom half, opponent at top
-  [view, 1 - view].forEach((p, side) => {
-    const n = W.pos.bar[p]; if (!n) return;
-    const cy = side === 0 ? 250 : 150, isSel = side === 0 && ui.twSel === "bar";
-    svg += `<circle cx="242" cy="${cy}" r="14" fill="${col[p]}" stroke="${isSel ? "#f2cb78" : (side === 0 && sources.has("bar") ? "#5fc3b4" : stroke[p])}" stroke-width="${isSel || sources.has("bar") ? 4 : 2}"/>
-      <text x="242" y="${cy + 5}" text-anchor="middle" font-size="13" font-weight="700" fill="${p ? "#fff" : "#2b1a0e"}">${n}</text>`;
+  g += `<text x="${slXY(100).x}" y="${slXY(100).y + 12}" text-anchor="middle" font-size="22">🏁</text>`;
+  for (const [a, b] of Object.entries(LADDERS)) {
+    const p = slXY(+a), q = slXY(b), dx = q.x - p.x, dy = q.y - p.y, len = Math.hypot(dx, dy), ux = -dy / len * 9, uy = dx / len * 9;
+    const n = Math.max(2, Math.floor(len / 20));
+    for (let i = 1; i < n; i++) { const t = i / n, x = p.x + dx * t, y = p.y + dy * t; g += `<line x1="${x + ux}" y1="${y + uy}" x2="${x - ux}" y2="${y - uy}" stroke="#b07d42" stroke-width="3.5" stroke-linecap="round"/>`; }
+    for (const s of [1, -1]) g += `<line x1="${p.x + ux * s}" y1="${p.y + uy * s}" x2="${q.x + ux * s}" y2="${q.y + uy * s}" stroke="#6e4220" stroke-width="5" stroke-linecap="round"/>`;
+  }
+  const SC = ["#3f8f3a", "#b5482f", "#6b4aa0", "#2f7d9a"];
+  Object.entries(SNAKES).forEach(([a, b], si) => {
+    const p = slXY(+a), q = slXY(b), dx = q.x - p.x, dy = q.y - p.y, len = Math.hypot(dx, dy), nx = -dy / len, ny = dx / len;
+    let d = "";
+    for (let i = 0; i <= 30; i++) { const t = i / 30, o = Math.sin(t * Math.PI * 3) * 13 * (1 - t * .4); d += (i ? "L" : "M") + (p.x + dx * t + nx * o).toFixed(1) + " " + (p.y + dy * t + ny * o).toFixed(1); }
+    const col = SC[si % SC.length];
+    g += `<path d="${d}" fill="none" stroke="#1c120b" stroke-opacity=".35" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 3)"/>
+      <path d="${d}" fill="none" stroke="${col}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="${d}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="4" stroke-dasharray="3 7" stroke-linecap="round"/>
+      <circle cx="${p.x}" cy="${p.y}" r="11" fill="${col}" stroke="#1c120b" stroke-width="1.5"/>
+      <circle cx="${p.x - 4}" cy="${p.y - 3}" r="3" fill="#fff"/><circle cx="${p.x + 4}" cy="${p.y - 3}" r="3" fill="#fff"/>
+      <circle cx="${p.x - 4}" cy="${p.y - 2.5}" r="1.4" fill="#000"/><circle cx="${p.x + 4}" cy="${p.y - 2.5}" r="1.4" fill="#000"/>
+      <path d="M${p.x} ${p.y + 8} l0 7 l-3 3 M${p.x} ${p.y + 15} l3 3" stroke="#d2313f" stroke-width="1.6" fill="none"/>`;
   });
-  svg += `<rect data-pt="bar" x="226" y="200" width="32" height="192" fill="transparent"/>`;
-  // off tray
-  [view, 1 - view].forEach((p, side) => {
-    const n = W.pos.off[p];
-    for (let k = 0; k < n; k++) { const y = side === 0 ? 384 - k * 11 : 14 + k * 11; svg += `<rect x="479" y="${y - 8}" width="30" height="9" rx="2" fill="${col[p]}" stroke="${stroke[p]}"/>`; }
-  });
-  if (targets.has("off")) svg += `<rect x="474" y="200" width="40" height="192" rx="6" fill="rgba(242,203,120,.45)"/>`;
-  svg += `<rect data-pt="off" x="474" y="200" width="40" height="192" fill="transparent"/></svg>`;
-
-  const pl = (idx) => { const id = W.players[idx];
-    return `<div class="pl ${W.turn === idx && W.phase !== "over" ? "turn" : ""}"><span class="ck" style="background:${col[idx]};border:2px solid ${stroke[idx]}"></span>
-      <b style="flex:1">${esc(nameOf(id))}${id === myId ? " (انت)" : ""}</b><span>${W.scores[id]}</span></div>`; };
-  const remaining = W.dice.slice(), rolledDice = W.rolled ? (W.rolled[0] === W.rolled[1] ? [W.rolled[0], W.rolled[0], W.rolled[0], W.rolled[0]] : W.rolled.slice()) : [];
-  let diceHTML = "";
-  if (W.phase !== "roll" && rolledDice.length) { const left = remaining.slice(); diceHTML = rolledDice.map(d => { const i = left.indexOf(d); if (i >= 0) { left.splice(i, 1); return dieHTML(d); } return dieHTML(d, "used"); }).join(""); }
-  const who = esc(nameOf(W.players[W.turn]));
-  let status = "", btns = "";
-  if (W.phase === "roll") { status = myTurn ? "دورك، ارمي الزهر" : "دور " + who + " يرمي الزهر"; if (myTurn) btns = `<button class="btn" data-act="twRoll">🎲 ارمي الزهر</button>`; }
-  else if (W.phase === "move") status = myTurn ? (ui.twSel != null ? "اختار المكان اللي هتنقل له" : "دوس على قشاطة منوّرة") : who + " بيلعب";
-  else if (W.phase === "nomove") status = (myTurn ? "مفيش حركة ليك" : who + " ملوش حركة") + " — الدور بيعدّي";
-  else if (W.phase === "confirm") { status = myTurn ? "خلصت حركاتك" : who + " بيأكد دوره"; if (myTurn) btns = `<button class="btn green" data-act="twDone">تأكيد الدور ✓</button>`; }
-  if (myTurn && (W.phase === "move" || W.phase === "confirm") && W.moved) btns += `<button class="btn ghost" data-act="twUndo">↩ رجوع</button>`;
-  if (W.opening && W.phase === "move") status = `${who} بدأ (${W.opening[0]} قصاد ${W.opening[1]}) — ` + status;
+  return (slStatic = g);
+}
+function renderSnakes() {
+  const L = S.snakes, meIdx = L.players.indexOf(myId), cur = L.players[L.turn], anim = !!ui.slAnim;
+  const myTurn = L.phase === "roll" && cur === myId;
+  const disp = id => ui.slDisp[id] ?? L.pos[id];
+  const groups = {};
+  L.players.forEach((id, i) => { const p = disp(id); if (p > 0) (groups[p] ||= []).push(i); });
+  const OFF = [[0, 0], [-11, -9], [11, 9], [-11, 9], [11, -9], [0, 12], [0, -12]];
+  let tokens = "";
+  for (const [p, arr] of Object.entries(groups)) {
+    const { x, y } = slXY(+p);
+    arr.forEach((i, k) => {
+      const o = arr.length > 1 ? OFF[k + 1] : OFF[0], r = arr.length > 1 ? 11 : 15, id = L.players[i], turn = i === L.turn && L.phase === "roll";
+      tokens += `<g class="tk" transform="translate(${x + o[0]} ${y + o[1]})"><circle r="${r + 3}" fill="${turn ? "#fff" : "#2b1a0e"}" opacity="${turn ? .9 : .45}"/>
+        <circle r="${r}" fill="${SL_COL[i]}" stroke="#2b1a0e" stroke-width="2"/><text y="${r * .38}" text-anchor="middle" font-size="${r}" font-weight="700" fill="#2b1a0e">${esc([...nameOf(id)][0] || "?")}</text></g>`;
+    });
+  }
+  const svg = `<svg class="slboard" viewBox="0 0 500 500" role="img" aria-label="لوحة السلم والتعبان">${slBoardSVG()}${tokens}</svg>`;
+  const pl = L.players.map((id, i) => `<div class="pl ${i === L.turn && L.phase === "roll" ? "turn" : ""}"><span class="ck" style="background:${SL_COL[i]};border:2px solid #2b1a0e"></span>
+      <b style="flex:1">${esc(nameOf(id))}${id === myId ? " (انت)" : ""}</b><span class="pos">${L.pos[id] ? "خانة " + L.pos[id] : "لسه برا"}</span><span title="مرات الفوز">🏆${L.wins[id] || 0}</span></div>`).join("");
+  let last = "";
+  if (L.last && !anim) {
+    const l = L.last; last = `${esc(nameOf(l.who))} جاب ${l.d}`;
+    if (l.bounced) last += " وعدّى ١٠٠ فرجع لورا";
+    if (l.kind === "ladder") last += ` · طلع السلم من ${l.to} لـ ${l.end} 🪜`;
+    if (l.kind === "snake") last += ` · التعبان قرصه ونزّله من ${l.to} لـ ${l.end} 🐍`;
+    if (L.six && l.d === 6 && L.phase === "roll" && cur === l.who) last += " · وليه دور كمان";
+  }
+  let status = "", btn = "";
+  if (L.phase === "roll") {
+    status = anim ? "..." : myTurn ? "دورك! ارمي الزهر" : "دور " + esc(nameOf(cur));
+    if (myTurn) btn = `<button class="btn" data-act="slRoll" ${anim ? "disabled" : ""}>🎲 ارمي الزهر</button>`;
+  }
   let over = "";
-  if (W.phase === "over") over = `<div class="card" style="text-align:center;margin-top:10px"><div class="sign" style="font-size:30px">🏆 ${esc(nameOf(W.result.winner))} كسب</div>
-      <p class="muted">${W.result.mars ? "مارس! " : ""}+${W.result.pts}</p>${isHost ? `<div class="row"><button class="btn" data-act="twAgain">دور جديد</button><button class="btn ghost" data-act="lobby">رجوع للقعدة</button></div>` : ""}</div>`;
-  if (W.phase === "aborted") over = `<div class="card" style="text-align:center;margin-top:10px"><p>${esc(W.note)}</p>${isHost ? '<button class="btn" data-act="lobby">رجوع للقعدة</button>' : ""}</div>`;
-  return `<div class="tw"><div>${svg}</div><div>
-    ${pl(1 - view)}${pl(view)}
-    <div class="dice ${W.phase === "move" && !W.moved ? "" : ""}">${diceHTML}</div>
-    <div class="status" style="font-size:16px">${status}</div>
-    <div class="row">${btns}</div>
-    ${meIdx < 0 ? '<p class="muted" style="text-align:center">انت بتتفرج 👀</p>' : `<p class="note" style="text-align:center">بتلعب بالقشاط ${meIdx === 0 ? "الفاتح" : "الغامق"}، وبيتك تحت على اليمين.</p>`}
-    ${isHost && W.phase !== "over" ? '<div class="row"><button class="btn sm ghost" data-act="lobby">إنهاء</button></div>' : ""}
+  if (L.phase === "over" && !anim) over = `<div class="card podium" style="margin-top:10px"><div class="w">🏆 ${esc(nameOf(L.winner))}</div><p class="muted">وصل ١٠٠ الأول وكسب الجولة</p>
+      ${isHost ? `<div class="row"><button class="btn" data-act="slAgain">جولة تانية</button><button class="btn ghost" data-act="lobby">رجوع للقعدة</button></div>` : '<p class="muted">صاحب القعدة هيختار اللي بعده</p>'}</div>`;
+  if (L.phase === "aborted") over = `<div class="card" style="text-align:center;margin-top:10px"><p>${esc(L.note)}</p>${isHost ? '<button class="btn" data-act="lobby">رجوع للقعدة</button>' : ""}</div>`;
+  return `<div class="sl"><div>${svg}</div><div>
+    ${pl}
+    <div class="dice">${L.last ? dieHTML(L.last.d, anim ? "roll" : "") : ""}</div>
+    <div class="status" style="font-size:17px">${status}</div>
+    <div class="lastmove">${last}</div>
+    <div class="row">${btn}</div>
+    ${meIdx < 0 ? '<p class="muted" style="text-align:center">انت بتتفرج 👀</p>' : ""}
+    <p class="note" style="text-align:center">${L.six ? "الـ ٦ بتديك دور كمان · " : ""}${L.exact ? "لازم توصل ١٠٠ بالظبط" : "أي رمية توصلك ١٠٠ بتكسب"}</p>
+    ${isHost && L.phase === "roll" ? '<div class="row"><button class="btn sm ghost" data-act="lobby">إنهاء اللعبة</button></div>' : ""}
   </div></div>${over}`;
 }
-function twTap(pt) {
-  const W = S.tawla, meIdx = W.players.indexOf(myId);
-  if (meIdx !== W.turn || W.phase !== "move") return;
-  const legal = W.legal;
-  if (ui.twSel != null && legal.some(m => String(m.from) === String(ui.twSel) && String(m.to) === pt)) {
-    act({ type: "twMove", from: ui.twSel, to: pt }); ui.twSel = null; return;
-  }
-  ui.twSel = legal.some(m => String(m.from) === pt) ? (pt === "bar" ? "bar" : pt) : null;
-  render();
+function slAnimate(L) {
+  const l = L.last;
+  if (ui.slAnim) clearTimeout(ui.slAnim.t);
+  const seq = [];
+  for (let p = l.from + 1; p <= Math.min(l.from + l.d, 100); p++) seq.push(p);
+  if (l.bounced) for (let p = 99; p >= l.to; p--) seq.push(p);
+  if (l.end !== l.to) seq.push(l.end);
+  const anim = ui.slAnim = { t: null };
+  ui.slDisp = { [l.who]: l.from };
+  SND.dice();
+  let i = 0;
+  const step = () => {
+    if (ui.slAnim !== anim) return;
+    if (i >= seq.length) {
+      ui.slAnim = null; ui.slDisp = {};
+      if (S?.snakes?.phase === "over") SND.win(); else if (S?.snakes?.players[S.snakes.turn] === myId) SND.turn();
+      render(); return;
+    }
+    const jump = l.end !== l.to && i === seq.length - 1;
+    ui.slDisp[l.who] = seq[i++];
+    if (jump) (l.kind === "ladder" ? SND.ladder : SND.snake)(); else SND.step();
+    render(); anim.t = setTimeout(step, jump ? 650 : 190);
+  };
+  anim.t = setTimeout(step, 450);
 }
+
+/* ---- candy boom (each client runs its own board) ---- */
+const CBN = 8, CBK = 6;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+function mulberry(a) { return () => { a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+let CB = null; // { round, rng, grid[r][c] = {k, sp, node}, el, score, busy, sel, ended, sent, hintT, drag }
+const cbClock = () => { const C = S?.candy, dt = Date.now() - (S?._recv || 0); return C ? { startIn: Math.max(0, C.startIn - dt), left: Math.max(0, C.left - dt) } : { startIn: 0, left: 0 }; };
+const cbLive = () => S?.mode === "candy" && S.candy?.phase === "play" && CB && !CB.ended && cbClock().startIn <= 0 && cbClock().left > 0;
+function cbStop() { if (CB) { clearTimeout(CB.hintT); clearTimeout(CB.sendT); CB = null; } }
+function renderCandy() {
+  const C = S.candy, mine = CB && CB.round === C.round ? CB.score : (C.scores[myId] || 0);
+  let res = "";
+  if (C.phase === "over") {
+    const rows = Object.entries(C.scores).map(([id, s]) => ({ id, s, n: member(id)?.name })).filter(r => r.n).sort((a, b) => b.s - a.s);
+    res = `<div class="card podium" style="margin-bottom:12px"><div class="muted">خلصت الجولة</div><div class="w">🏆 ${rows[0] ? esc(rows[0].n) : ""}</div>
+      <p class="muted">${rows[0] ? "كسب بـ " + rows[0].s.toLocaleString("en-US") + " نقطة" : ""}</p>
+      ${isHost ? `<div class="row"><button class="btn" data-act="cbAgain">جولة تانية</button><button class="btn ghost" data-act="lobby">رجوع للقعدة</button></div>` : '<p class="muted">صاحب القعدة هيختار اللي بعده</p>'}</div>`;
+  }
+  return `<div id="cbRoot" class="cbwrap" data-k="${C.round}-${C.phase}"><div>${res}
+    <div class="cbhud"><div><div class="lbl">السكور بتاعك</div><div class="big" id="cbMe">${mine.toLocaleString("en-US")}</div></div>
+      <div class="combo" id="cbCombo"></div>
+      <div style="text-align:end"><div class="lbl">الوقت</div><div class="big" id="cbLeft">--</div></div></div>
+    <div class="cbtime"><i id="cbBar"></i></div>
+    <div id="cbSlot"></div>
+    <p class="note" style="text-align:center">اسحب الحلوى ناحية جارتها، أو دوس عليها وبعدين على جارتها</p>
+    ${isHost && C.phase === "play" ? '<div class="row"><button class="btn sm ghost" data-act="lobby">إنهاء اللعبة</button></div>' : ""}
+  </div><div id="cbSide">${scoreboard(C.scores, "الترتيب لايف")}</div></div>`;
+}
+function cbMount() {
+  const C = S.candy, slot = $("#cbSlot"); if (!slot) return;
+  if (!CB || CB.round !== C.round) cbNew(C);
+  slot.replaceWith(CB.el); // the board element survives re-renders so its animations do too
+  cbTick();
+}
+function cbNew(C) {
+  cbStop();
+  const el = document.createElement("div"); el.className = "cb";
+  CB = { round: C.round, rng: mulberry(C.seed), grid: [], el, score: 0, busy: false, sel: null, ended: false, sent: 0, sendT: null, hintT: null, drag: null };
+  do {
+    CB.grid = [];
+    for (let r = 0; r < CBN; r++) { const row = []; CB.grid.push(row);
+      for (let c = 0; c < CBN; c++) { let k; do k = cbRand(); while ((c >= 2 && row[c - 1].k === k && row[c - 2].k === k) || (r >= 2 && CB.grid[r - 1][c].k === k && CB.grid[r - 2][c].k === k)); row.push({ k, sp: null }); } }
+  } while (!cbFindMove());
+  CB.grid.forEach((row, r) => row.forEach((cd, c) => cbNode(cd, r, c)));
+  el.addEventListener("pointerdown", cbDown);
+  el.addEventListener("pointermove", cbMove);
+  el.addEventListener("pointerup", cbUp);
+  el.addEventListener("pointercancel", () => CB && (CB.drag = null));
+  cbHintArm();
+}
+const cbRand = () => Math.floor(CB.rng() * CBK);
+function cbNode(cd, r, c, fromRow) {
+  const n = document.createElement("div"); n.innerHTML = '<div class="cand"></div>'; cd.node = n; n._cd = cd;
+  cbStyle(cd); n.style.setProperty("--c", c);
+  if (fromRow != null) { n.classList.add("nofx"); n.style.setProperty("--r", fromRow); CB.el.appendChild(n); void n.offsetHeight; n.classList.remove("nofx"); }
+  else CB.el.appendChild(n);
+  n.style.setProperty("--r", r);
+}
+const cbStyle = cd => cd.node.className = `cell k${cd.k < 0 ? 0 : cd.k}${cd.sp ? " sp-" + cd.sp : ""}`;
+const cbPos = cd => { for (let r = 0; r < CBN; r++) for (let c = 0; c < CBN; c++) if (CB.grid[r][c] === cd) return [r, c]; return null; };
+function cbPlace(r, c) { const cd = CB.grid[r][c]; if (cd) { cd.node.style.setProperty("--r", r); cd.node.style.setProperty("--c", c); } }
+function cbFindRuns() {
+  const runs = [], g = CB.grid;
+  for (const h of [true, false]) for (let a = 0; a < CBN; a++) {
+    let s = 0;
+    for (let b = 1; b <= CBN; b++) {
+      const at = i => h ? g[a][i] : g[i][a], k0 = at(s)?.k, kb = b < CBN ? at(b)?.k : undefined;
+      if (b < CBN && kb === k0 && k0 >= 0) continue;
+      if (b - s >= 3 && k0 >= 0) runs.push({ h, k: k0, cells: Array.from({ length: b - s }, (_, i) => h ? [a, s + i] : [s + i, a]) });
+      s = b;
+    }
+  }
+  return runs;
+}
+function cbSwapData(a, b) { const g = CB.grid, t = g[a[0]][a[1]]; g[a[0]][a[1]] = g[b[0]][b[1]]; g[b[0]][b[1]] = t; }
+function cbFindMove() {
+  for (let r = 0; r < CBN; r++) for (let c = 0; c < CBN; c++) {
+    if (CB.grid[r][c].sp === "r") return [[r, c], [r, c < CBN - 1 ? c + 1 : c - 1]];
+    for (const [dr, dc] of [[0, 1], [1, 0]]) {
+      const r2 = r + dr, c2 = c + dc; if (r2 >= CBN || c2 >= CBN) continue;
+      cbSwapData([r, c], [r2, c2]); const ok = cbFindRuns().length > 0; cbSwapData([r, c], [r2, c2]);
+      if (ok) return [[r, c], [r2, c2]];
+    }
+  }
+  return null;
+}
+function cbFx(text, r, c) {
+  const f = document.createElement("div"); f.className = "fx"; f.textContent = text;
+  f.style.left = ((c + .5) * 12.5) + "%"; f.style.top = ((r + .5) * 12.5) + "%"; CB.el.appendChild(f); setTimeout(() => f.remove(), 950);
+}
+function cbBlast(r0, c0, r1, c1) {
+  const b = document.createElement("div"); b.className = "blast";
+  Object.assign(b.style, { left: c0 * 12.5 + "%", top: r0 * 12.5 + "%", width: (c1 - c0 + 1) * 12.5 + "%", height: (r1 - r0 + 1) * 12.5 + "%" });
+  CB.el.appendChild(b); setTimeout(() => b.remove(), 400);
+}
+// Clears `seed` cells plus whatever runs exist, then drops and refills, repeating while new runs appear.
+async function cbResolve(seed, swapped) {
+  let combo = 0;
+  for (;;) {
+    const runs = cbFindRuns();
+    if (!runs.length && !seed) break;
+    combo++;
+    const key = (r, c) => r * CBN + c, clear = new Set(seed || []), make = new Map();
+    seed = null;
+    const hSet = new Set(), vSet = new Set();
+    for (const run of runs) for (const [r, c] of run.cells) { clear.add(key(r, c)); (run.h ? hSet : vSet).add(key(r, c)); }
+    for (const run of runs) {
+      const ks = run.cells.map(([r, c]) => key(r, c)), free = ks.filter(k => !CB.grid[Math.floor(k / CBN)][k % CBN].sp && !make.has(k));
+      const cross = ks.find(k => hSet.has(k) && vSet.has(k));
+      const pivot = free.find(k => swapped?.some(([r, c]) => key(r, c) === k)) ?? (cross != null && free.includes(cross) ? cross : free[Math.floor(free.length / 2)]);
+      if (pivot == null) continue;
+      if (run.cells.length >= 5) make.set(pivot, { k: -1, sp: "r" });
+      else if (cross != null) { if (!make.has(cross) && free.includes(cross)) make.set(cross, { k: run.k, sp: "b" }); }
+      else if (run.cells.length === 4) make.set(pivot, { k: run.k, sp: run.h ? "v" : "h" });
+    }
+    // set off specials caught in the blast (chains)
+    let specials = 0;
+    const queue = [...clear], done = new Set();
+    while (queue.length) {
+      const k = queue.pop(); if (done.has(k) || make.has(k)) continue; done.add(k);
+      const r = Math.floor(k / CBN), c = k % CBN, cd = CB.grid[r][c]; if (!cd?.sp) continue;
+      specials++;
+      const add = (rr, cc) => { if (rr >= 0 && cc >= 0 && rr < CBN && cc < CBN && !clear.has(key(rr, cc))) { clear.add(key(rr, cc)); queue.push(key(rr, cc)); } };
+      if (cd.sp === "h") { for (let i = 0; i < CBN; i++) add(r, i); cbBlast(r, 0, r, CBN - 1); }
+      else if (cd.sp === "v") { for (let i = 0; i < CBN; i++) add(i, c); cbBlast(0, c, CBN - 1, c); }
+      else if (cd.sp === "b") { for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) add(r + dr, c + dc); cbBlast(Math.max(0, r - 1), Math.max(0, c - 1), Math.min(CBN - 1, r + 1), Math.min(CBN - 1, c + 1)); }
+      else if (cd.sp === "r") { const ks = CB.grid.flat().map(x => x.k).filter(x => x >= 0), col = ks[Math.floor(CB.rng() * ks.length)];
+        CB.grid.forEach((row, rr) => row.forEach((x, cc) => { if (x.k === col) add(rr, cc); })); }
+      if (queue.length) queue.reverse(); // breadth-first feels nicer for chains
+    }
+    for (const k of make.keys()) clear.delete(k);
+    const pts = clear.size * 10 * combo + specials * 60 + make.size * 30;
+    CB.score += pts; cbReport();
+    if (specials) SND.boom(); else SND.pop(combo);
+    const ks = [...clear], mid = ks[Math.floor(ks.length / 2)] ?? [...make.keys()][0];
+    if (mid != null) cbFx("+" + pts, Math.floor(mid / CBN), mid % CBN);
+    const cmb = $("#cbCombo"); if (cmb) cmb.textContent = combo >= 2 ? `كومبو ×${combo} 🔥` : specials ? "بوووم 💥" : "";
+    for (const k of clear) CB.grid[Math.floor(k / CBN)][k % CBN].node.classList.add("pop");
+    for (const [k, m] of make) { const cd = CB.grid[Math.floor(k / CBN)][k % CBN]; cd.k = m.k; cd.sp = m.sp; cbStyle(cd); }
+    await sleep(230);
+    for (const k of clear) { const r = Math.floor(k / CBN), c = k % CBN; CB.grid[r][c].node.remove(); CB.grid[r][c] = null; }
+    // gravity + refill from above
+    for (let c = 0; c < CBN; c++) {
+      let w = CBN - 1;
+      for (let r = CBN - 1; r >= 0; r--) if (CB.grid[r][c]) { if (w !== r) { CB.grid[w][c] = CB.grid[r][c]; CB.grid[r][c] = null; cbPlace(w, c); } w--; }
+      for (let r = w; r >= 0; r--) { const cd = { k: cbRand(), sp: null }; CB.grid[r][c] = cd; cbNode(cd, r, c, r - (w + 1)); }
+    }
+    await sleep(260);
+    swapped = null;
+  }
+  setTimeout(() => { const cmb = $("#cbCombo"); if (cmb && !CB?.busy) cmb.textContent = ""; }, 900);
+}
+async function cbTrySwap(a, b) {
+  if (!CB || CB.busy || !cbLive()) return;
+  CB.busy = true; cbSelect(null); cbHintClear();
+  const A = CB.grid[a[0]][a[1]], B = CB.grid[b[0]][b[1]];
+  cbSwapData(a, b); cbPlace(a[0], a[1]); cbPlace(b[0], b[1]);
+  await sleep(200);
+  let seed = null;
+  const key = (r, c) => r * CBN + c;
+  if (A.sp === "r" || B.sp === "r") { // rainbow takes every candy of the colour it was swapped with
+    const other = A.sp === "r" ? B : A, rb = A.sp === "r" ? b : a;
+    seed = new Set([key(rb[0], rb[1])]);
+    CB.grid.forEach((row, r) => row.forEach((x, c) => { if (other.sp === "r" || x.k === other.k) seed.add(key(r, c)); }));
+    A.sp === "r" && (A.sp = "x"); B.sp === "r" && (B.sp = "x"); // spent; "x" sets nothing off
+  } else if (A.sp && B.sp) seed = new Set([key(...a), key(...b)]);
+  else if (!cbFindRuns().length) {
+    cbSwapData(a, b); cbPlace(a[0], a[1]); cbPlace(b[0], b[1]); SND.swapBad();
+    A.node.classList.add("shake"); B.node.classList.add("shake"); setTimeout(() => { A.node.classList.remove("shake"); B.node.classList.remove("shake"); }, 320);
+    await sleep(200); CB.busy = false; cbHintArm(); return;
+  }
+  await cbResolve(seed, [a, b]);
+  if (!CB) return;
+  if (!cbFindMove()) await cbShuffle();
+  CB.busy = false; cbHintArm();
+}
+async function cbShuffle() {
+  cbFx("بنخلط 🔀", 3.5, 3.5);
+  do CB.grid.flat().forEach(cd => { if (!cd.sp) cd.k = cbRand(); }); while (cbFindRuns().length || !cbFindMove());
+  CB.grid.flat().forEach(cd => { cd.node.classList.add("pop"); });
+  await sleep(220);
+  CB.grid.flat().forEach(cd => { cbStyle(cd); });
+}
+function cbSelect(p) {
+  if (CB.sel) CB.grid[CB.sel[0]][CB.sel[1]]?.node.classList.remove("sel");
+  CB.sel = p; if (p) CB.grid[p[0]][p[1]].node.classList.add("sel");
+}
+function cbHintClear() { clearTimeout(CB?.hintT); CB?.el.querySelectorAll(".hint").forEach(n => n.classList.remove("hint")); }
+function cbHintArm() {
+  cbHintClear();
+  CB.hintT = setTimeout(() => { if (!CB || CB.busy || !cbLive()) return; const m = cbFindMove(); if (m) m.forEach(([r, c]) => CB.grid[r][c].node.classList.add("hint")); }, 6000);
+}
+function cbReport() {
+  if (!CB || CB.sendT) return;
+  CB.sendT = setTimeout(() => { if (!CB) return; CB.sendT = null; if (CB.score !== CB.sent) { CB.sent = CB.score; act({ type: "cbScore", s: CB.score }); } }, 350);
+  const me = $("#cbMe"); if (me) me.textContent = CB.score.toLocaleString("en-US");
+}
+function cbCellAt(e) { const n = e.target.closest(".cell"); return n?._cd ? cbPos(n._cd) : null; }
+function cbDown(e) {
+  const p = cbCellAt(e); if (!p || !cbLive()) return;
+  CB.drag = { p, x: e.clientX, y: e.clientY }; try { CB.el.setPointerCapture(e.pointerId); } catch (x) {}
+}
+function cbMove(e) {
+  const d = CB?.drag; if (!d) return;
+  const dx = e.clientX - d.x, dy = e.clientY - d.y, lim = CB.el.clientWidth / CBN * .35;
+  if (Math.max(Math.abs(dx), Math.abs(dy)) < lim) return;
+  CB.drag = null;
+  const [r, c] = d.p, t = Math.abs(dx) > Math.abs(dy) ? [r, c + Math.sign(dx)] : [r + Math.sign(dy), c];
+  if (t[0] >= 0 && t[1] >= 0 && t[0] < CBN && t[1] < CBN) cbTrySwap(d.p, t);
+}
+function cbUp() {
+  const d = CB?.drag; if (!d) return; CB.drag = null;
+  const p = d.p, s = CB.sel;
+  if (s && Math.abs(s[0] - p[0]) + Math.abs(s[1] - p[1]) === 1) cbTrySwap(s, p);
+  else cbSelect(s && s[0] === p[0] && s[1] === p[1] ? null : p);
+}
+function cbTick() {
+  if (!S || S.mode !== "candy" || !S.candy || !CB) return;
+  const { startIn, left } = cbClock(), C = S.candy;
+  const t = $("#cbLeft"), bar = $("#cbBar");
+  if (t) t.textContent = startIn > 0 ? "--" : Math.ceil(left / 1000);
+  if (bar) { bar.style.width = (startIn > 0 ? 100 : 100 * left / (C.dur * 1000)) + "%"; bar.style.background = left < 10000 ? "var(--red)" : "var(--tile2)"; }
+  let ov = CB.el.querySelector(".over"), msg = "";
+  if (C.phase === "over" || (startIn <= 0 && left <= 0)) msg = "خلص الوقت! ⏱️";
+  else if (startIn > 0) msg = startIn > 3000 ? "استعد..." : String(Math.ceil(startIn / 1000));
+  if (msg) { if (!ov) { ov = document.createElement("div"); ov.className = "over"; CB.el.appendChild(ov); } ov.textContent = msg; }
+  else if (ov) { ov.remove(); }
+  if (msg && startIn <= 0 && !CB.ended) { CB.ended = true; cbHintClear(); cbSelect(null); if (CB.score !== CB.sent) { CB.sent = CB.score; act({ type: "cbScore", s: CB.score }); } }
+}
+setInterval(cbTick, 200);
 
 /* ---- floaters ---- */
 function showReact(from, e) {
@@ -1270,11 +1556,15 @@ $("#people").addEventListener("click", e => {
 $("#stage").addEventListener("change", e => {
   if (e.target.id === "selCat") ui.cat = e.target.value;
   if (e.target.id === "selCount") ui.count = +e.target.value;
+  if (e.target.id === "selDomTarget") ui.domTarget = +e.target.value;
+  if (e.target.id === "selCbDur") ui.cbDur = +e.target.value;
+  if (e.target.id === "optSix") ui.slSix = e.target.checked;
+  if (e.target.id === "optExact") ui.slExact = e.target.checked;
   if (e.target.dataset.pick) {
-    const key = e.target.dataset.pick, max = key === "domPick" ? 4 : 2;
+    const key = e.target.dataset.pick, max = key === "domPick" ? 4 : 6;
     const ids = [...document.querySelectorAll(`[data-pick="${key}"]:checked`)].map(x => x.value);
-    if (ids.length > max) { e.target.checked = false; toast(key === "domPick" ? "الدومينو لحد ٤ لاعيبة" : "الطاولة لاعبين اتنين بس"); return; }
-    ui[key] = ids; ui[key === "domPick" ? "domTouched" : "twTouched"] = true;
+    if (ids.length > max) { e.target.checked = false; toast(key === "domPick" ? "الدومينو لحد ٤ لاعيبة" : "السلم والتعبان لحد ٦ لاعيبة"); return; }
+    ui[key] = ids; ui[key === "domPick" ? "domTouched" : "slTouched"] = true;
   }
 });
 $("#stage").addEventListener("click", e => {
@@ -1282,15 +1572,15 @@ $("#stage").addEventListener("click", e => {
   if (go) {
     const g = go.dataset.go;
     if (g === "trivia") act({ type: "trivStart", cat: ui.cat, count: ui.count });
-    if (g === "domino") { if (!ui.domPick.length) return toast("اختار لاعب واحد على الأقل"); act({ type: "domStart", players: ui.domPick }); }
-    if (g === "tawla") { if (!ui.twPick.length) return toast("اختار لاعب واحد على الأقل"); act({ type: "twStart", players: ui.twPick }); }
+    if (g === "domino") { if (!ui.domPick.length) return toast("اختار لاعب واحد على الأقل"); act({ type: "domStart", players: ui.domPick, target: ui.domTarget }); }
+    if (g === "snakes") { if (!ui.slPick.length) return toast("اختار لاعب واحد على الأقل"); act({ type: "slStart", players: ui.slPick, six: ui.slSix, exact: ui.slExact }); }
+    if (g === "candy") act({ type: "cbStart", dur: ui.cbDur });
     return;
   }
-  const a = e.target.closest("[data-act]"); if (a) { if (a.dataset.act === "twUndo" || a.dataset.act === "twDone") ui.twSel = null; act({ type: a.dataset.act }); return; }
+  const a = e.target.closest("[data-act]"); if (a) { act({ type: a.dataset.act }); return; }
   const v = e.target.closest("[data-vote]"); if (v) { act({ type: "vote", v: v.dataset.vote === "1" }); return; }
   const t = e.target.closest("[data-tile]"); if (t) { domTapTile(t.dataset.tile); return; }
   const s = e.target.closest("[data-side]"); if (s && ui.domSel) { act({ type: "domPlay", tile: ui.domSel, side: s.dataset.side }); ui.domSel = null; return; }
-  const p = e.target.closest("[data-pt]"); if (p) { twTap(p.dataset.pt); return; }
 });
 $("#stage").addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.dataset.tile) { e.preventDefault(); domTapTile(e.target.dataset.tile); } });
 window.addEventListener("beforeunload", () => { try { peer?.destroy(); } catch (e) {} });
